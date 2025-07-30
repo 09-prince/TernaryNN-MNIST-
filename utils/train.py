@@ -14,11 +14,10 @@ import numpy as np
 def train_model(
     log_dir: str = "./logs",
     checkpoint_dir: str = "./checkpoints",
-    num_epochs: int = 10,
+    num_epochs: int = 15,
     batch_size: int = 128,
-    lr: float = 2e-2,
+    lr: float = 1e-2,
     device: str = "cuda" if torch.cuda.is_available() else "cpu",
-    seed: int = 42
 ):
     """
     Train a TernaryCNN model on MNIST dataset and save logs & model.
@@ -33,14 +32,7 @@ def train_model(
         seed (int): Random seed for reproducibility.
     """
 
-    # ---------- Set random seed for reproducibility ----------
-    random.seed(seed)
-    np.random.seed(seed)
-    torch.manual_seed(seed)
-    torch.cuda.manual_seed_all(seed)
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
-    # ---------------------------------------------------------
+
 
     # Load MNIST data
     print("------------------------------Downloading the dataset..----------------------------------------")
